@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Caption Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-magic"></i>
+                <h1>AI Caption Magic</h1>
+            </div>
+            <p class="subtitle">Transform your images with AI-powered captions</p>
+
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Upload Section -->
+            <div class="upload-section" id="uploadSection">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <div class="upload-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <h3>Upload Your Image</h3>
+                        <p>Drag & drop your image here or click to browse</p>
+                        <input type="file" id="imageInput" accept="image/*" hidden>
+                        <button class="upload-btn" onclick="document.getElementById('imageInput').click()">
+                            Choose File
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preview Section -->
+            <div class="preview-section" id="previewSection" style="display: none;">
+                <div class="image-preview">
+                    <img id="previewImage" src="" alt="Preview">
+                    <div class="image-overlay">
+                        <button class="change-btn" onclick="resetUpload()">
+                            <i class="fas fa-edit"></i> Change Image
+                        </button>
+                    </div>
+                </div>
+                <button class="generate-btn" id="generateBtn" onclick="generateCaption()">
+                    <span class="btn-text">Generate Caption</span>
+                    <span class="btn-loading" style="display: none;">
+                        <i class="fas fa-spinner fa-spin"></i> Generating...
+                    </span>
+                </button>
+            </div>
+
+            <!-- Result Section -->
+            <div class="result-section" id="resultSection" style="display: none;">
+                <div class="result-card">
+                    <div class="result-header">
+                        <i class="fas fa-sparkles"></i>
+                        <h3>Generated Caption</h3>
+                    </div>
+                    <div class="caption-container">
+                        <p id="generatedCaption" class="caption-text"></p>
+                        <button class="copy-btn" onclick="copyCaption()">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="new-image-btn" onclick="resetUpload()">
+                            <i class="fas fa-plus"></i> New Image
+                        </button>
+                        <button class="share-btn" onclick="shareCaption()">
+                            <i class="fas fa-share"></i> Share
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading Animation -->
+            <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+                <div class="loading-content">
+                    <div class="loading-spinner"></div>
+                    <h3>AI is analyzing your image...</h3>
+                    <p>This may take a few moments</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>  Created with ❤️</p>
+        </footer>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
